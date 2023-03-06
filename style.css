@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Dosis:wght@500&family=Hammersmith+One&family=Libre+Bodoni&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background-color: var(--color2);
+    font-family: 'Hammersmith One', sans-serif;
+}
+p{
+    color: white;
+}
+:root {
+    --color1: #14FFEC;
+    --color2: #323232;
+    --color3: #0D7377;
+    --color4: #212121;
+}
+header {
+    background-color: var(--color3);
+    color: var(--color2);
+    text-align: center;
+    padding: 20px;
+    /* padding-bottom: 30px; */
+}
+h1 {
+    color: var(--color4);
+    font-size: 3rem;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.data {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.input_data {
+    align-self: flex-start;
+    align-items: center;
+    background-color: var(--color3);
+    border: 1px solid var(--color3);
+    border-radius: 3px;
+    display: flex;
+    margin: 40px 0px;
+    padding: 8px;
+    width: 65%;
+}
+#label-1 {
+    padding: 5px;
+    text-align: justify;
+    font-size: 1.2rem   ;
+    text-align: center;
+}
+#data-to-sort {
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: var(--color2);
+    color: white;
+    padding: 8px;
+    height: fit-content;
+    width: 100%;
+    vertical-align: middle;
+}
+#graph {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 5vh 10vh;
+    width: 80%;
+}
+.block {
+    border: 1px solid black;
+}
+.button_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+}
+.primary_button {
+    background-color: var(--color3);
+    border: 1px solid var(--color4);
+    border-radius: 4px;
+    color: #FFFFE8;
+    font-size: 1.2rem;
+    height: 45px;
+    padding: 10px;
+    width: 140px;
+}
+.primary_button:hover {
+    background-color: var(--color4);
+    box-shadow: 3px 3px 3px var(--color3);
+    cursor: pointer;
+}
+#start-button {
+    vertical-align: middle;
+}
+/* #start-button:visited {
+
+} */
+#sort_btn {
+    visibility: hidden;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .data {
+        flex-direction: column;
+    }
+    .input_data{
+        align-self: center;
+        width: 80%;
+    }
+    #graph {
+        width: 85%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .data {
+        flex-direction: column;
+    }
+    .input_data{
+        align-self: center;
+        width: 80%;
+    }
+    #graph {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .data {
+        flex-direction: column;
+    }
+    .input_data{
+        align-self: center;
+        width: 80%;
+    }
+    #graph {
+        width: 95%;
+    }
+}
