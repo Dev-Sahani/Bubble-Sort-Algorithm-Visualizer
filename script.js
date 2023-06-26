@@ -4,10 +4,25 @@ var swapColor = "red";
 
 const btn1 = document.getElementById("start-button");
 const btn2 = document.getElementById("sort_btn");
+const btn3 = document.getElementById("demo-btn");
 btn1.addEventListener("click", start);
 btn2.addEventListener("click", sort);
+btn3.addEventListener("click", fillDemoValues);
 
-function toNum(str){
+function fillDemoValues(){
+    const input = document.getElementById("data-to-sort");
+    let data = "";
+    for(let i=1; i<=100; i++){
+        const newData = Math.round(Math.random()*400);
+        let str = newData.toString();
+        if(i !== 100) str = str + " ";
+        data = data + str;
+    }
+    console.log(data);
+    input.setAttribute("value", data);
+}
+
+function toNumber(str){
     let no = 0;
     let n = str.length;
     for(let i=0; i<n; i++){
@@ -27,25 +42,30 @@ function split(str){
         while(i<str.length && str.charAt(i) !=" "){
             i++;
         }
-        arr.push(toNum(str.substring(l, i)));
+        arr.push(toNumber(str.substring(l, i)));
     }
 }
 
 function start(){
     arr = [];
-    const parent = document.getElementById("graph");     
+    const parent = document.getElementById("graph"); 
+    // Removing the older data    
     while(parent.hasChildNodes()){
         parent.removeChild(parent.firstChild);
     }
+    // Adding new data:
     const data = document.getElementById("data-to-sort");
     let str = data.value;
     split(str);
+    // Determining min and max height of blocks representing data
     let max = Number.MIN_SAFE_INTEGER;
     for(let i of arr){
         if(i>max) max = i;
     }
+    // extraHig is factor that is used to normalize the height of the block
     let extraHig = (400/max);
     extraHig -= 0.1;
+    // w determines width of the blocks
     let w = (100/arr.length);
     for(let i=1; i<=arr.length; i++){
         let block = document.createElement('div');
@@ -74,19 +94,19 @@ const sleep = (time)=>{
     return new Promise(resolve => setTimeout(resolve, time));
 }
 async function sort(){
-    console.log(arr);
     let noOfSwaps = arr.length*(arr.length)/2;
+    // Calculting the sleep time to visualize the algorithm properly
     let time = Math.floor(10000/noOfSwaps);
-    console.log(time);
     for(let i=arr.length; i>=0; i--){
         for(let j=1; j<i; j++){
+            // Converts the color of the blocks being swaped to red
             color(j,j+1, swapColor);
             await sleep(time);
             if(arr[j+1-1] < arr[j-1]){
                 swap(j,j+1);
             }
+            // Change the color of the blocks back to original color
             color(j,j+1, graphColor);
         }
     }
-    console.log(arr);
 }
